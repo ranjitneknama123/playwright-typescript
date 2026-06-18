@@ -1,20 +1,17 @@
 import { Before, After } from '@cucumber/cucumber';
-import { chromium, Browser, Page } from '@playwright/test';
-
-let browser: Browser;
-let page: Page;
+import { chromium } from '@playwright/test';
 
 Before(async function () {
-  browser = await chromium.launch({
+
+  this.browser = await chromium.launch({
     headless: false
-    
   });
 
-  page = await browser.newPage();
-
-  this.page = page;
+  this.context = await this.browser.newContext();
+  this.page = await this.context.newPage();
 });
 
 After(async function () {
-  await browser.close();
+  await this.context.close();
+  await this.browser.close();
 });

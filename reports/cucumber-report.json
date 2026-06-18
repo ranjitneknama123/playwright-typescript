@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 2765804600
+              "duration": 975558699
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3462309999
+              "duration": 3153983999
             }
           },
           {
@@ -36,11 +36,11 @@
             "line": 7,
             "name": "user clicks on signuporlogin button",
             "match": {
-              "location": "stepDefinitions\\login.steps.ts:14"
+              "location": "stepDefinitions\\login.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 647899300
+              "duration": 505330900
             }
           },
           {
@@ -49,11 +49,11 @@
             "line": 8,
             "name": "User enters username \"ranjitsumeru@gmail.com\"",
             "match": {
-              "location": "stepDefinitions\\login.steps.ts:18"
+              "location": "stepDefinitions\\login.steps.ts:20"
             },
             "result": {
               "status": "passed",
-              "duration": 853855799
+              "duration": 125972800
             }
           },
           {
@@ -62,11 +62,11 @@
             "line": 9,
             "name": "User enters password \"Ranjit@12345\"",
             "match": {
-              "location": "stepDefinitions\\login.steps.ts:23"
+              "location": "stepDefinitions\\login.steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 52241200
+              "duration": 25078599
             }
           },
           {
@@ -75,11 +75,11 @@
             "line": 10,
             "name": "User clicks login button",
             "match": {
-              "location": "stepDefinitions\\login.steps.ts:27"
+              "location": "stepDefinitions\\login.steps.ts:28"
             },
             "result": {
               "status": "passed",
-              "duration": 2091376400
+              "duration": 1983800699
             }
           },
           {
@@ -88,11 +88,11 @@
             "line": 11,
             "name": "Login should be successful",
             "match": {
-              "location": "stepDefinitions\\login.steps.ts:31"
+              "location": "stepDefinitions\\login.steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 124757700
+              "duration": 131784600
             }
           },
           {
@@ -100,7 +100,112 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 873397699
+              "duration": 663446599
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login;user-login123",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "User Login123",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 811035500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User navigates to login page",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2467994699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "user clicks on signuporlogin button",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 784520599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "User enters username \"ranjitsumeru@gmail.com\"",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 118231999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "User enters password \"Ranjit@12345\"",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23131199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 17,
+            "name": "User clicks login button",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:28"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2536627899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "Login should be successful",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 134910100
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 696644400
             }
           }
         ],

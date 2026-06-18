@@ -32,8 +32,8 @@ export class LoginPage {
   }
 
   async enterUsername(username: string) {
-    await this.clickSignupLogin();
-    
+    //await this.clickSignupLogin();
+
     await this.usernameTxt.fill(username);
   }
 
