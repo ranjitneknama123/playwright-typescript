@@ -1,0 +1,118 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login;user-login",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "User Login",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2765804600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User navigates to login page",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3462309999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "user clicks on signuporlogin button",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 647899300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 8,
+            "name": "User enters username \"ranjitsumeru@gmail.com\"",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 853855799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "User enters password \"Ranjit@12345\"",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 52241200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "User clicks login button",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:27"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2091376400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "Login should be successful",
+            "match": {
+              "location": "stepDefinitions\\login.steps.ts:31"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 124757700
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 873397699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "login",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Login",
+    "tags": [],
+    "uri": "features\\login.feature"
+  }
+]
