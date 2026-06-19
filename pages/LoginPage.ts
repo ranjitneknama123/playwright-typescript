@@ -11,6 +11,7 @@ export class LoginPage {
   private usernameTxt: Locator;
   private passwordTxt: Locator;
   private loginBtn: Locator;
+  private errorTxt: Locator;
 
 
   constructor(page: Page) {
@@ -20,6 +21,8 @@ export class LoginPage {
     this.usernameTxt = page.locator('//h2[contains(text(),"Login to your account")]/..//*[@name="email"]');
     this.passwordTxt = page.locator('//h2[contains(text(),"Login to your account")]/..//*[@name="password"]');
     this.loginBtn = page.locator('//h2[contains(text(),"Login to your account")]/..//*[text()="Login"]');
+    this.errorTxt = page.locator('//*[text()="Your email or password is incorrect!"]');
+
   }
 
   async navigate() {
@@ -32,7 +35,7 @@ export class LoginPage {
   }
 
   async enterUsername(username: string) {
-    //await this.clickSignupLogin();
+    await this.clickSignupLogin();
 
     await this.usernameTxt.fill(username);
   }
@@ -43,6 +46,10 @@ export class LoginPage {
 
   async clickLogin() {
     await this.loginBtn.click();
+  }
+
+  async getErrorMessage() {
+    return await this.errorTxt.textContent();
   }
 
 }

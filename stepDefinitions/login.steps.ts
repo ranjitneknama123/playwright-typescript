@@ -37,3 +37,14 @@ Then('Login should be successful', async function () {
   console.log('Is Logout Link Visible: ', isLogoutLinkVisible);
   expect(isLogoutLinkVisible).toBeTruthy();
 });
+
+When('User enters username {string} and password {string}', async function (username: string, password: string) {
+  await this.loginPage.enterUsername(username);
+  await this.loginPage.enterPassword(password);
+});
+
+Then('Login should fail', async function () {
+  const errorMessage = await this.loginPage.getErrorMessage();
+  console.log('Error Message: ', errorMessage);
+  expect(errorMessage).toBe('Your email or password is incorrect!');
+});

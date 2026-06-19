@@ -10,6 +10,6 @@
   "include": [
     "features/**/*.ts",
     "pages/**/*.ts",
-    "support/**/*.ts"
+    "hooks/**/*.ts"
   ]
 }

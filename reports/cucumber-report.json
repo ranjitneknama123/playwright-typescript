@@ -6,7 +6,7 @@
         "description": "",
         "id": "login;user-login",
         "keyword": "Scenario",
-        "line": 6,
+        "line": 7,
         "name": "User Login",
         "steps": [
           {
@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 975558699
+              "duration": 917336199
             }
           },
           {
@@ -27,177 +27,72 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3153983999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 7,
-            "name": "user clicks on signuporlogin button",
-            "match": {
-              "location": "stepDefinitions\\login.steps.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 505330900
+              "duration": 3987533800
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 8,
-            "name": "User enters username \"ranjitsumeru@gmail.com\"",
-            "match": {
-              "location": "stepDefinitions\\login.steps.ts:20"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 125972800
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 9,
-            "name": "User enters password \"Ranjit@12345\"",
-            "match": {
-              "location": "stepDefinitions\\login.steps.ts:24"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 25078599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 10,
-            "name": "User clicks login button",
-            "match": {
-              "location": "stepDefinitions\\login.steps.ts:28"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1983800699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "Login should be successful",
-            "match": {
-              "location": "stepDefinitions\\login.steps.ts:32"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 131784600
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 663446599
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "login;user-login123",
-        "keyword": "Scenario",
-        "line": 13,
-        "name": "User Login123",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 811035500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "User navigates to login page",
-            "match": {
-              "location": "stepDefinitions\\login.steps.ts:9"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2467994699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
             "name": "user clicks on signuporlogin button",
             "match": {
               "location": "stepDefinitions\\login.steps.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 784520599
+              "duration": 446809100
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 15,
+            "line": 9,
             "name": "User enters username \"ranjitsumeru@gmail.com\"",
             "match": {
               "location": "stepDefinitions\\login.steps.ts:20"
             },
             "result": {
               "status": "passed",
-              "duration": 118231999
+              "duration": 529072500
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 16,
+            "line": 10,
             "name": "User enters password \"Ranjit@12345\"",
             "match": {
               "location": "stepDefinitions\\login.steps.ts:24"
             },
             "result": {
               "status": "passed",
-              "duration": 23131199
+              "duration": 24803599
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 17,
+            "line": 11,
             "name": "User clicks login button",
             "match": {
               "location": "stepDefinitions\\login.steps.ts:28"
             },
             "result": {
               "status": "passed",
-              "duration": 2536627899
+              "duration": 803958399
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 18,
+            "line": 12,
             "name": "Login should be successful",
             "match": {
               "location": "stepDefinitions\\login.steps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 134910100
+              "duration": 112138399
             }
           },
           {
@@ -205,11 +100,16 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 696644400
+              "duration": 599835900
             }
           }
         ],
-        "tags": [],
+        "tags": [
+          {
+            "name": "@Smoke",
+            "line": 6
+          }
+        ],
         "type": "scenario"
       }
     ],
