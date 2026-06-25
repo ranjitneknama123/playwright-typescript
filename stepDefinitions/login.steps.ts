@@ -48,3 +48,10 @@ Then('Login should fail', async function () {
   console.log('Error Message: ', errorMessage);
   expect(errorMessage).toBe('Your email or password is incorrect!');
 });
+
+Then('Login page title should be {string}', async function (expectedTitle: string) {
+  console.log('Expected Title: ', expectedTitle);
+  const actualTitle = await this.page.title();
+  console.log('Actual Title: ', actualTitle);
+  await expect(actualTitle).toBe(expectedTitle);
+})

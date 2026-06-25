@@ -24,3 +24,9 @@ Feature: Login
       | ranjitsumeru@gmail.com | wrongpass |
       | ranjitsumeru@gmail.com | " "       |
 
+
+  @title
+  Scenario: Validate login page title
+    When user clicks on signuporlogin button
+    Then Login page title should be "Automation Exercise - Signup / Login"
+
