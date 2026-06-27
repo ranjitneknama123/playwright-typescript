@@ -7,6 +7,7 @@ export class HomePage {
      //Locators
      private logoutLink: Locator;
 
+
      constructor(page: Page) {
           this.page = page;
 
@@ -24,6 +25,7 @@ export class HomePage {
      async clickLogout() {
           await this.logoutLink.click();
      }
+
 
 
 }

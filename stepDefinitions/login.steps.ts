@@ -2,6 +2,8 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
+import { CustomWorld } from '../hooks/world';
+import { TestDataGenerator } from '../utils/TestDataGenerator';
 
 // let loginPage!: LoginPage;
 // let homePage!: HomePage;
@@ -55,3 +57,40 @@ Then('Login page title should be {string}', async function (expectedTitle: strin
   console.log('Actual Title: ', actualTitle);
   await expect(actualTitle).toBe(expectedTitle);
 })
+
+
+When('the user enters a valid name', async function (this: CustomWorld) {
+  const fullName = await TestDataGenerator.getFullName();
+  await this.loginPage.enterSignupName(fullName);
+});
+
+When('the user enters a valid email address', async function (this: CustomWorld) {
+  const email = TestDataGenerator.getEmail();
+  console.log('Generated Email: ', email);
+  //this.testData.set('signupEmail', email);
+  this.setData('signupEmail', email);
+  this.loginPage.enterSignupEmail(email);
+});
+
+
+When('the user clicks the signup button', async function (this: CustomWorld) {
+  await this.loginPage.clickSignup();
+
+});
+
+When('user select title', async function (this: CustomWorld) {
+  await this.loginPage.selectTitle();
+});
+
+Then('pause the page for sometime', async function (this: CustomWorld) {
+  await this.page.pause();
+});
+
+When('the user provides a valid password during signup', async function (this: CustomWorld) {
+  const password = await TestDataGenerator.getPassword();
+  //await this.testData.set('signupPassword', password)
+  this.setData('password', password);
+  await this.loginPage.enterPasswordForSignup(password);
+  console.log('Generated Password: ', password);
+  console.log('Signup Password from testData: ', this.getData<string>('password'));
+});

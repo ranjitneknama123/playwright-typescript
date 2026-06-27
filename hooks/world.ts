@@ -17,9 +17,24 @@ export class CustomWorld extends World {
   loginPage!: LoginPage;
   homePage!: HomePage;
 
+  testData = new Map<string, unknown>();
+
   constructor(options: IWorldOptions) {
     super(options);
-    console.log('CustomWorld initialized');
+  }
+
+  setData(key: string, value: unknown): void {
+    this.testData.set(key, value);
+  }
+
+  getData<T>(key: string): T {
+    const value = this.testData.get(key);
+
+    if (value === undefined) {
+      throw new Error(`No test data found for key: ${key}`);
+    }
+
+    return value as T;
   }
 }
 
