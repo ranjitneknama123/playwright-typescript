@@ -1,44 +1,100 @@
-import { Before, After, AfterStep, Status, setDefaultTimeout } from '@cucumber/cucumber';
+import { Before, After, Status, setDefaultTimeout } from '@cucumber/cucumber';
 import { chromium } from '@playwright/test';
 import { CustomWorld } from './world';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
-
+import { Logger } from '../utils/Logger';
+import fs from "fs";
+import path from "path";
 
 setDefaultTimeout(120 * 1000);
 
 Before(async function (this: CustomWorld) {
 
-  this.browser = await chromium.launch({
-    headless: false,
-    args: ['--start-maximized']
-  });
+  try {
 
-  //this.context = await this.browser.newContext();
-  this.context = await this.browser.newContext({
-    viewport: null
-  });
-
-  this.page = await this.context.newPage();
-
-  this.loginPage = new LoginPage(this.page);
-  this.homePage = new HomePage(this.page);
-
-  this.page.setDefaultTimeout(120 * 1000);
-
-  this.page.setDefaultNavigationTimeout(60 * 1000);
-});
-
-After(async function (this: CustomWorld, { result }) {
-  if (result?.status === Status.FAILED) {
-    const screenshot = await this.page.screenshot({
-      path: `screenshots/${Date.now()}.png`,
-      fullPage: true
+    this.browser = await chromium.launch({
+      headless: false,
+      args: ['--start-maximized']
     });
 
-    await this.attach(screenshot, 'image/png');
+    this.context = await this.browser.newContext({
+      viewport: null
+    });
+
+    this.page = await this.context.newPage();
+
+    this.loginPage = new LoginPage(this.page);
+    this.homePage = new HomePage(this.page);
+
+    this.page.setDefaultTimeout(120 * 1000);
+    this.page.setDefaultNavigationTimeout(60 * 1000);
+
+  } catch (error) {
+
+    console.error("Failed to initialize browser:", error);
+    Logger.info(`Failed to initialize browser ${error}`);
+
+    await this.context?.close();
+    await this.browser?.close();
+
+    throw error;
+  }
+});
+
+After(async function (this: CustomWorld, scenario) {
+
+  try {
+
+    if (this.page && !this.page.isClosed()) {
+
+      const now = new Date();
+
+      const timestamp =
+        `${String(now.getDate()).padStart(2, "0")}_` +
+        `${String(now.getMonth() + 1).padStart(2, "0")}_` +
+        `${now.getFullYear()}_` +
+        `${String(now.getHours()).padStart(2, "0")}_` +
+        `${String(now.getMinutes()).padStart(2, "0")}_` +
+        `${String(now.getSeconds()).padStart(2, "0")}_` +
+        `${String(now.getMilliseconds()).padStart(3, "0")}`;
+
+      const screenshotsDir = path.join(process.cwd(), "screenshots");
+
+      if (!fs.existsSync(screenshotsDir)) {
+        fs.mkdirSync(screenshotsDir, { recursive: true });
+      }
+
+      const scenarioName = scenario.pickle.name
+        .replace(/[<>:"/\\|?*]/g, "_")
+        .replace(/\s+/g, "_");
+
+      const filePath = path.join(
+        screenshotsDir,
+        `${scenarioName}_${timestamp}.png`
+      );
+
+      const screenshot = await this.page.screenshot({
+        path: filePath,
+        fullPage: true
+      });
+
+      await this.attach(screenshot, "image/png");
+
+      console.log(`Screenshot saved: ${filePath}`);
+    }
+
+  } catch (error) {
+
+    console.error("Failed while capturing screenshot:", error);
+
+  } finally {
+
+    await this.page?.close().catch(() => { });
+    await this.context?.close().catch(() => { });
+    await this.browser?.close().catch(() => { });
+
+    console.log("Browser closed successfully.");
   }
 
-  await this.context?.close();
-  await this.browser?.close();
 });

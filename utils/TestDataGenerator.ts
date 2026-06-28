@@ -61,12 +61,19 @@ export class TestDataGenerator {
         return faker.number.int({ min, max });
     }
 
-    static getDOB(): Date {
-        return faker.date.birthdate({
+    static getDOB(): { day: string; month: string; year: string } {
+
+        const dob = faker.date.birthdate({
             min: 18,
             max: 60,
             mode: 'age'
         });
+
+        return {
+            day: String(dob.getDate()),
+            month: String(dob.getMonth() + 1),
+            year: String(dob.getFullYear())
+        };
     }
 
     static getRandomText(): string {

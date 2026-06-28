@@ -94,3 +94,75 @@ When('the user provides a valid password during signup', async function (this: C
   console.log('Generated Password: ', password);
   console.log('Signup Password from testData: ', this.getData<string>('password'));
 });
+
+
+//When user enter the date of birth
+When('user enter the date of birth', async function (this: CustomWorld) {
+  const { day, month, year } = await TestDataGenerator.getDOB();
+  await this.loginPage.enterDob(day, month, year);
+});
+
+//When user enter first name
+When('user enter first name', async function (this: CustomWorld) {
+  const fistName = await TestDataGenerator.getFirstName();
+  await this.loginPage.enterFirstName(fistName);
+});
+
+//When user the last name
+When('user the last name', async function (this: CustomWorld) {
+  const lastName = await TestDataGenerator.getLastName();
+  await this.loginPage.enterLastName(lastName);
+});
+
+//When user enter the company name
+When('user enter the company name', async function (this: CustomWorld) {
+  const companyName = await TestDataGenerator.getCompanyName();
+  await this.loginPage.enterCompanyName(companyName);
+});
+
+//When user enter the address deatails
+When('user enter the address deatails', async function (this: CustomWorld) {
+  const address1 = await TestDataGenerator.getAddress();
+  await this.loginPage.enterAddressDetails(address1);
+});
+
+//When user enter the address two detils
+When('user enter the address two detils', async function (this: CustomWorld) {
+  const address2 = await TestDataGenerator.getAddress();
+  await this.loginPage.enterAddress2Details(address2);
+});
+
+//When user enter the country name
+When('user enter the country name', async function (this: CustomWorld) {
+  const country = await TestDataGenerator.getCountry();
+  await this.loginPage.enterCountryName(country);
+});
+
+//When user enter the state name
+When('user enter the state name', async function (this: CustomWorld) {
+  const state = await TestDataGenerator.getState();
+  await this.loginPage.enterStateName(state);
+});
+
+//When user enter the city name
+When('user enter the city name', async function (this: CustomWorld) {
+  const city = await TestDataGenerator.getCity();
+  await this.loginPage.enterCityName(city);
+});
+
+//When user enter zip code
+When('user enter zip code', async function (this: CustomWorld) {
+  const zipCode = await TestDataGenerator.getZipCode();
+  await this.loginPage.enterZipCode(zipCode);
+});
+
+//When user enter the mobile number
+When('user enter the mobile number', async function (this: CustomWorld) {
+  const mobileNumber = await TestDataGenerator.getMobileNumber();
+  await this.loginPage.enterMobileName(mobileNumber);
+});
+
+//When user click on crate on create account button
+When('user click on crate on create account button', async function (this: CustomWorld) {
+  await this.loginPage.clickOnCreateAcccountBtn();
+});

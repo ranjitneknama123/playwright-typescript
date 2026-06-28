@@ -12,7 +12,20 @@ Feature: Login
     When the user clicks the signup button
     When user select title
     When the user provides a valid password during signup
-    Then pause the page for sometime
+    When user enter the date of birth
+    When user enter first name
+    When user the last name
+    When user enter the company name
+    When user enter the address deatails
+    When user enter the address two detils
+    #When user enter the country name
+    When user enter the state name
+    When user enter the city name
+    When user enter zip code
+    When user enter the mobile number
+    When user click on crate on create account button
+    #Then pause the page for sometime
+
 
 
 
