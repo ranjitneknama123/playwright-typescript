@@ -3,7 +3,6 @@ Feature: Login
   Background:
     Given User navigates to login page
 
-
   @signup
   Scenario: Successful signup with valid details
     When user clicks on signuporlogin button
@@ -25,9 +24,18 @@ Feature: Login
     When user enter the mobile number
     When user click on crate on create account button
     #Then pause the page for sometime
-
-
-
+    Then validate account created "Account Created!" message
+    #Then pause the page for sometime
+    Then also validate "Congratulations! Your new account has been successfully created!" message
+    #Then pause the page for sometime
+    When user clicks on signuporlogin button
+    When user clicks on logout button
+    When user enter created email id
+    When user entered created password
+    And User clicks login button
+    #Then pause the page for sometime
+    Then Login should be successful
+    
 
   @Smoke @postive
   Scenario: User Login

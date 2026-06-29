@@ -36,6 +36,8 @@ export class LoginPage {
   private zipcode: Locator;
   private mobileNumber: Locator;
   private createAccountBtn: Locator;
+  private accCreatedSucessfullMsg: Locator;
+  private congratulationsMsg: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -66,6 +68,8 @@ export class LoginPage {
     this.zipcode = page.locator('[data-qa="zipcode"]');
     this.mobileNumber = page.locator('[data-qa="mobile_number"]');
     this.createAccountBtn = page.locator('[data-qa="create-account"]');
+    this.accCreatedSucessfullMsg = page.locator('//b[normalize-space(text())="Account Created!"]');
+    this.congratulationsMsg = page.locator('//p[contains(text(),"Congratulations!")]');
 
   }
 
@@ -127,7 +131,7 @@ export class LoginPage {
   }
 
   async enterDob(day: string, month: string, year: string) {
-   
+
     console.log("Day:", day);
     console.log("Month:", month);
     console.log("Year:", year);
@@ -145,11 +149,10 @@ export class LoginPage {
     await this.page.locator('#months').selectOption(month);
     Logger.info(`Successfully selected month: ${month}`);
 
-   // await this.Dob_Year.click();
+    // await this.Dob_Year.click();
     //await this.page.locator('#years').selectOption(year);
     //Logger.info(`Successfully selected year: ${year}`);
-    await this.Dob_Year.selectOption(year );
-
+    await this.Dob_Year.selectOption(year);
     Logger.info(`Successfully selected year: ${year}`);
   }
 
@@ -207,6 +210,23 @@ export class LoginPage {
     await this.createAccountBtn.click();
     Logger.info("Successfully clicked on create account button");
   }
+
+  async getAccountCreatedMessage(): Promise<string> {
+    const text = await this.accCreatedSucessfullMsg.textContent();
+    if (text === null) {
+      throw new Error("Account created message not found");
+    }
+    return text;
+  }
+
+   async getCongratulationsMessage(): Promise<string> {
+    const text = await this.congratulationsMsg.textContent();
+    if (text === null) {
+      throw new Error("unable to get Congratulations message");
+    }
+    return text;
+  }
+
 
 
 }

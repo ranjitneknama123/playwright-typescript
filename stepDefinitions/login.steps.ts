@@ -166,3 +166,36 @@ When('user enter the mobile number', async function (this: CustomWorld) {
 When('user click on crate on create account button', async function (this: CustomWorld) {
   await this.loginPage.clickOnCreateAcccountBtn();
 });
+
+
+Then('validate account created {string} message', async function (this: CustomWorld, expectedTitle: string): Promise<void> {
+  // Use your helper method from the page object
+  const actualMessage = await this.loginPage.getAccountCreatedMessage();
+  console.log(actualMessage)
+
+  // Assertion
+  expect(actualMessage).toContain(expectedTitle);
+}
+);
+
+Then('also validate {string} message', async function (this: CustomWorld, expectedTitle: string): Promise<void> {
+  // Use your helper method from the page object
+  const actualMessage = await this.loginPage.getCongratulationsMessage();
+  console.log(actualMessage)
+
+  // Assertion
+  expect(actualMessage).toContain(expectedTitle);
+}
+);
+
+//When user enter created email id
+When('user enter created email id', async function (this: CustomWorld) {
+  console.log(this.getData('signupEmail'));
+  await this.loginPage.enterUsername(this.getData('signupEmail'));
+});
+
+//When user entered created password
+When('user entered created password', async function(this: CustomWorld){
+ await this.loginPage.enterPassword(this.getData<string>('password'));
+});
+
