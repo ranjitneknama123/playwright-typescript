@@ -46,7 +46,7 @@ After(async function (this: CustomWorld, scenario) {
 
   try {
 
-    if (this.page && !this.page.isClosed()) {
+    if (scenario.result?.status === Status.FAILED && this.page && !this.page.isClosed()) {
 
       const now = new Date();
 
