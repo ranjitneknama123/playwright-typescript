@@ -7,6 +7,8 @@ import {
 import { Browser, BrowserContext, Page } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
+import { SignupPage } from '../pages/signupPage';
+import { ProductsPage } from '../pages/productsPage';
 
 export class CustomWorld extends World {
 
@@ -16,6 +18,8 @@ export class CustomWorld extends World {
 
   loginPage!: LoginPage;
   homePage!: HomePage;
+  signupPage!: SignupPage;
+  productsPage!: ProductsPage;
 
   testData = new Map<string, unknown>();
 
@@ -36,6 +40,12 @@ export class CustomWorld extends World {
 
     return value as T;
   }
+
+  getAllTestData(): Record<string, any> {
+    return Object.fromEntries(this.testData);
+  }
+
 }
+
 
 setWorldConstructor(CustomWorld);

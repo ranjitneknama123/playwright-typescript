@@ -35,14 +35,22 @@ Feature: Login
     And User clicks login button
     #Then pause the page for sometime
     Then Login should be successful
-    
+
+  @singupNegative
+  Scenario: User Signup with existing email address
+    When user clicks on signuporlogin button
+    When the user enters a valid name
+    When the user enters a valid email "ranjitsumeru@gmail.com" address for sign up
+    When the user clicks the signup button
+    Then validate error message "Email Address already exist!"
+
 
   @Smoke @postive
   Scenario: User Login
     When user clicks on signuporlogin button
     When User enters username "ranjitsumeru@gmail.com"
-    And User enters password "Ranjit@12345"
-    And User clicks login button
+    When User enters password "Ranjit@12345"
+    When User clicks login button
     Then Login should be successful
 
   @Negative

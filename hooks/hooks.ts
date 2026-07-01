@@ -46,7 +46,35 @@ After(async function (this: CustomWorld, scenario) {
 
   try {
 
-    if (scenario.result?.status === Status.FAILED && this.page && !this.page.isClosed()) {
+    // ================================
+    // Attach Test Data to Allure Report
+    // ================================
+    const testData = this.getAllTestData();
+
+    // if (Object.keys(testData).length > 0) {
+    //   await this.attach(
+    //     JSON.stringify(testData, null, 2),
+    //     "application/json"
+    //   );
+    // }
+
+    if (Object.keys(testData).length > 0) {
+
+      const formattedTestData = Object.entries(testData)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join("\n");
+
+      await this.attach(formattedTestData, "text/plain");
+    }
+
+    // ======================================
+    // Capture Screenshot ONLY if Test Failed
+    // ======================================
+    if (
+      scenario.result?.status === Status.FAILED &&
+      this.page &&
+      !this.page.isClosed()
+    ) {
 
       const now = new Date();
 
@@ -79,6 +107,7 @@ After(async function (this: CustomWorld, scenario) {
         fullPage: true
       });
 
+      // Attach Screenshot to Allure
       await this.attach(screenshot, "image/png");
 
       console.log(`Screenshot saved: ${filePath}`);
@@ -86,15 +115,18 @@ After(async function (this: CustomWorld, scenario) {
 
   } catch (error) {
 
-    console.error("Failed while capturing screenshot:", error);
+    console.error("After Hook Error:", error);
 
   } finally {
 
-    await this.page?.close().catch(() => { });
+    // Close resources in correct order
+    if (this.page && !this.page.isClosed()) {
+      await this.page.close().catch(() => { });
+    }
+
     await this.context?.close().catch(() => { });
     await this.browser?.close().catch(() => { });
 
     console.log("Browser closed successfully.");
   }
-
 });

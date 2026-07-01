@@ -38,6 +38,7 @@ export class LoginPage {
   private createAccountBtn: Locator;
   private accCreatedSucessfullMsg: Locator;
   private congratulationsMsg: Locator;
+  private signUpErrorMsg: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -70,6 +71,7 @@ export class LoginPage {
     this.createAccountBtn = page.locator('[data-qa="create-account"]');
     this.accCreatedSucessfullMsg = page.locator('//b[normalize-space(text())="Account Created!"]');
     this.congratulationsMsg = page.locator('//p[contains(text(),"Congratulations!")]');
+    this.signUpErrorMsg = page.locator('//p[contains(text(),"Email Address already exist!")]');
 
   }
 
@@ -103,6 +105,10 @@ export class LoginPage {
 
   async getErrorMessage() {
     return await this.errorTxt.textContent();
+  }
+
+  async getSignupErrorMessage(): Promise<string | null> {
+    return await this.signUpErrorMsg.textContent();
   }
 
   async enterSignupName(name: string) {
@@ -219,7 +225,7 @@ export class LoginPage {
     return text;
   }
 
-   async getCongratulationsMessage(): Promise<string> {
+  async getCongratulationsMessage(): Promise<string> {
     const text = await this.congratulationsMsg.textContent();
     if (text === null) {
       throw new Error("unable to get Congratulations message");

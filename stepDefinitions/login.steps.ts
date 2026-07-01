@@ -61,6 +61,7 @@ Then('Login page title should be {string}', async function (expectedTitle: strin
 
 When('the user enters a valid name', async function (this: CustomWorld) {
   const fullName = await TestDataGenerator.getFullName();
+  console.log('Generated Full Name: ', fullName);
   await this.loginPage.enterSignupName(fullName);
 });
 
@@ -75,7 +76,6 @@ When('the user enters a valid email address', async function (this: CustomWorld)
 
 When('the user clicks the signup button', async function (this: CustomWorld) {
   await this.loginPage.clickSignup();
-
 });
 
 When('user select title', async function (this: CustomWorld) {
@@ -99,66 +99,77 @@ When('the user provides a valid password during signup', async function (this: C
 //When user enter the date of birth
 When('user enter the date of birth', async function (this: CustomWorld) {
   const { day, month, year } = await TestDataGenerator.getDOB();
+  await this.setData('DOB', { day, month, year });
   await this.loginPage.enterDob(day, month, year);
 });
 
 //When user enter first name
 When('user enter first name', async function (this: CustomWorld) {
   const fistName = await TestDataGenerator.getFirstName();
+  await this.setData('First Name', fistName);
   await this.loginPage.enterFirstName(fistName);
 });
 
 //When user the last name
 When('user the last name', async function (this: CustomWorld) {
   const lastName = await TestDataGenerator.getLastName();
+  await this.setData('Last Name', lastName);
   await this.loginPage.enterLastName(lastName);
 });
 
 //When user enter the company name
 When('user enter the company name', async function (this: CustomWorld) {
   const companyName = await TestDataGenerator.getCompanyName();
+  await this.setData('Company Name', companyName);
   await this.loginPage.enterCompanyName(companyName);
 });
 
 //When user enter the address deatails
 When('user enter the address deatails', async function (this: CustomWorld) {
   const address1 = await TestDataGenerator.getAddress();
+  await this.setData('Address1', address1);
   await this.loginPage.enterAddressDetails(address1);
 });
 
 //When user enter the address two detils
 When('user enter the address two detils', async function (this: CustomWorld) {
   const address2 = await TestDataGenerator.getAddress();
+  await this.setData('Address2', address2);
   await this.loginPage.enterAddress2Details(address2);
 });
 
 //When user enter the country name
 When('user enter the country name', async function (this: CustomWorld) {
   const country = await TestDataGenerator.getCountry();
+  await this.setData('Country', country);
   await this.loginPage.enterCountryName(country);
 });
 
 //When user enter the state name
 When('user enter the state name', async function (this: CustomWorld) {
   const state = await TestDataGenerator.getState();
+  await this.setData('State', state);
   await this.loginPage.enterStateName(state);
 });
 
 //When user enter the city name
 When('user enter the city name', async function (this: CustomWorld) {
   const city = await TestDataGenerator.getCity();
+  this.setData('City', city);
   await this.loginPage.enterCityName(city);
 });
 
 //When user enter zip code
 When('user enter zip code', async function (this: CustomWorld) {
   const zipCode = await TestDataGenerator.getZipCode();
+  this.setData('Zip Code', zipCode);
   await this.loginPage.enterZipCode(zipCode);
 });
 
 //When user enter the mobile number
 When('user enter the mobile number', async function (this: CustomWorld) {
   const mobileNumber = await TestDataGenerator.getMobileNumber();
+  this.setData('Mobile Number', mobileNumber);
   await this.loginPage.enterMobileName(mobileNumber);
 });
 
@@ -195,7 +206,21 @@ When('user enter created email id', async function (this: CustomWorld) {
 });
 
 //When user entered created password
-When('user entered created password', async function(this: CustomWorld){
- await this.loginPage.enterPassword(this.getData<string>('password'));
+When('user entered created password', async function (this: CustomWorld) {
+  await this.loginPage.enterPassword(this.getData<string>('password'));
+});
+
+//When the user enters a valid email "ranjitsumeru@gmail.com" address for sign up
+When('the user enters a valid email {string} address for sign up', async function (this: CustomWorld, email: string) {
+  console.log('Email from feature file: ', email);
+  await this.loginPage.enterSignupEmail(email);
+});
+
+//Then validate error message "Email Address already exist!"
+Then('validate error message {string}', async function (this: CustomWorld, expectedErrorMessage: string) {
+  const actualErrorMessage = await this.loginPage.getSignupErrorMessage();
+  console.log('Actual Error Message: ', actualErrorMessage);
+  await expect(actualErrorMessage).toBe(expectedErrorMessage);
+  await expect(actualErrorMessage).toContain(expectedErrorMessage);
 });
 
