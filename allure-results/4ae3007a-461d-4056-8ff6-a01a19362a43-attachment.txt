@@ -1,5 +1,0 @@
-First Name: Jaime
-Card Number: 4111111111111111
-CVC: 311
-Expiry Month: 12
-Expiry Year: 2028

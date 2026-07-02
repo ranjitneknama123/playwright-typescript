@@ -8,19 +8,17 @@
             "runtimeExecutable": "npx",
             "runtimeArgs": [
                 "cucumber-js",
-                "features/login.featu\\\\re",
-                "--require-module",
-                "ts-node/register",
-                "--require",
-                "stepDefinitions/**/*.ts",
-                "--require",
-                "hooks/**/*.ts"
+                "features/products.feature"
             ],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "skipFiles": [
                 "<node_internals>/**"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceFolder}/**/*.ts"
             ]
         }
     ]

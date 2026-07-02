@@ -1,0 +1,12 @@
+signupEmail: zane82@yahoo.com
+password: wlPttDk7IK
+DOB: [object Object]
+First Name: Melyna
+Last Name: Hilll
+Company Name: Boyle, Grimes and Mosciski
+Address1: 624 Kent Road
+Address2: 485 Sydnee Fords
+State: North Carolina
+City: Johnstonton
+Zip Code: 91745
+Mobile Number: 4086434077

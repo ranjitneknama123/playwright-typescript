@@ -57,7 +57,8 @@ After(async function (this: CustomWorld, scenario) {
         .map(([key, value]) => `${key}: ${value}`)
         .join("\n");
 
-      await this.attach(formattedTestData, "text/plain");
+      await this.attach(formattedTestData
+        , "text/plain");
     }
 
     // ======================================
