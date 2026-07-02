@@ -25,15 +25,21 @@ export class SignupPage {
 
 
     async enterSignupName(name: string) {
+        Logger.info(`Entering signup name: ${name}`);
         await this.signupName.fill(name);
+        Logger.info(`Successfully entered signup name: ${name}`);
     }
 
     async enterSignupEmail(email: string) {
+        Logger.info(`Entering signup email: ${email}`);
         await this.signupEmail.fill(email);
+        Logger.info(`Successfully entered signup email: ${email}`);
     }
 
     async clickSignupButton() {
+        Logger.info("Clicking signup button.");
         await this.signupBtn.click();
+        Logger.info("Clicked signup button successfully.");
     }
 
 }

@@ -51,13 +51,6 @@ After(async function (this: CustomWorld, scenario) {
     // ================================
     const testData = this.getAllTestData();
 
-    // if (Object.keys(testData).length > 0) {
-    //   await this.attach(
-    //     JSON.stringify(testData, null, 2),
-    //     "application/json"
-    //   );
-    // }
-
     if (Object.keys(testData).length > 0) {
 
       const formattedTestData = Object.entries(testData)
@@ -65,6 +58,24 @@ After(async function (this: CustomWorld, scenario) {
         .join("\n");
 
       await this.attach(formattedTestData, "text/plain");
+    }
+
+    // ======================================
+    // Print Failure Details
+    // ======================================
+    if (scenario.result?.status === Status.FAILED) {
+
+      console.error("\n========================================");
+      console.error("❌ Scenario Failed");
+      console.error(`Scenario Name : ${scenario.pickle.name}`);
+      console.error(`Status        : ${scenario.result.status}`);
+
+      if (scenario.result.message) {
+        console.error("\nFailure Details:");
+        console.error(scenario.result.message);
+      }
+
+      console.error("========================================\n");
     }
 
     // ======================================
@@ -107,10 +118,9 @@ After(async function (this: CustomWorld, scenario) {
         fullPage: true
       });
 
-      // Attach Screenshot to Allure
       await this.attach(screenshot, "image/png");
 
-      console.log(`Screenshot saved: ${filePath}`);
+      console.log(`📸 Screenshot saved: ${filePath}`);
     }
 
   } catch (error) {
@@ -119,7 +129,6 @@ After(async function (this: CustomWorld, scenario) {
 
   } finally {
 
-    // Close resources in correct order
     if (this.page && !this.page.isClosed()) {
       await this.page.close().catch(() => { });
     }
@@ -127,6 +136,6 @@ After(async function (this: CustomWorld, scenario) {
     await this.context?.close().catch(() => { });
     await this.browser?.close().catch(() => { });
 
-    console.log("Browser closed successfully.");
+    console.log("✅ Browser closed successfully.");
   }
 });
