@@ -87,3 +87,23 @@ Then('validate order place successfully message as {string}', async function (th
     await this.setData('Order Placed Message', actualMessage);
     expect(actualMessage).toBe(expectedMessage);
 });
+
+//Then validate the product count in cart
+Then('validate the product count in cart', async function (this: CustomWorld) {
+    const totalProductsInCart = await this.productsPage.checkProductInCart();
+    console.log('Total Products in Cart:', totalProductsInCart.length);
+    expect(totalProductsInCart.length).toBeGreaterThan(0);
+});
+
+//When click on register login link
+When('click on register login link', async function (this: CustomWorld) {
+    await this.productsPage.clickOnRegisterLoginLink();
+});
+
+//When click on "cart" header link
+//When click on "cart" header link
+When('click on {string} header link', async function (this: CustomWorld, productName: string) {
+    console.log('header name: ',productName)
+    await this.page.pause;
+    await this.productsPage.clickOnHeaderByName();
+});

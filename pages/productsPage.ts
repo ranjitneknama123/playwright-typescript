@@ -22,8 +22,8 @@ export class ProductsPage {
     private submitButton: Locator;
     private congratulationsMessage: Locator;
     private orderPlaced: Locator;
-
-
+    private registerLoginLink: Locator;
+    private clickOncardheaderLink: Locator;
 
 
     constructor(page: Page) {
@@ -43,6 +43,8 @@ export class ProductsPage {
         this.submitButton = page.locator('#submit');
         this.congratulationsMessage = page.locator('//*[normalize-space(text())="Congratulations! Your order has been confirmed!"]');
         this.orderPlaced = page.locator('//*[normalize-space(text())="Order Placed!"]');
+        this.registerLoginLink = page.locator('//u[normalize-space(text())="Register / Login"]');
+        this.clickOncardheaderLink = page.locator('//a[contains(text(),"Cart")]')
 
 
     }
@@ -163,6 +165,18 @@ export class ProductsPage {
         Logger.info(`Order Placed message found: ${message}`);
 
         return message || '';
+    }
+
+    async clickOnRegisterLoginLink() {
+        Logger.info("Clicking on Register/Login link");
+        await this.registerLoginLink.click();
+        Logger.info("Register/Login link clicked");
+    }
+
+    async clickOnHeaderByName() {
+        Logger.info('Clicking on cart')
+        await this.clickOncardheaderLink.click();
+        Logger.info('Clicked on cart')
     }
 
 }
