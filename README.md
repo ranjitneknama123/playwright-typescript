@@ -1,5 +1,22 @@
 # Playwright + Cucumber TypeScript Automation Suite
 
+## Proof of Concept (POC)
+
+### Objective
+Build a maintainable, BDD-driven automation framework that validates end-to-end user journeys for a web application using Playwright and Cucumber.
+
+### Outcomes
+- Executable business-readable test scenarios for login, signup, product checkout, and logout.
+- Reusable page object abstractions that separate UI actions from test logic.
+- Dynamic test data generation to reduce hardcoded values and improve test coverage.
+- Automated reporting and failure diagnostics with Allure and screenshots.
+
+### Advantages
+- Faster validation of critical e-commerce flows through automation.
+- Clear collaboration between non-technical and technical team members via Gherkin feature files.
+- Easier maintenance with modular page objects and shared hooks.
+- Expandable architecture for adding new scenarios, browsers, and environments.
+
 ## Overview
 This project is an end-to-end UI automation framework built with Playwright and Cucumber using TypeScript. It targets the Automation Exercise website and covers common user journeys such as login, signup, product selection, checkout, and logout.
 
@@ -12,11 +29,21 @@ The suite currently includes scenarios for:
 - Logout validation
 
 ## Tech stack
-- TypeScript
-- Playwright
-- Cucumber.js
-- Faker.js for test data generation
-- Allure for reporting
+-Technology Stack
+Component	Technology
+Language	TypeScript
+UI Automation	Playwright
+BDD	Cucumber
+Design Pattern	Page Object Model (POM)
+Assertions	Playwright Expect
+Reporting	Allure Report
+Logging	Custom Logger
+Test Data	Faker.js
+IDE	VS Code
+Source Control	Git / GitHub
+CI/CD	Jenkins / GitHub Actions
+Package Manager	npm
+
 
 ## Project structure
 - features/: Gherkin feature files
@@ -26,6 +53,156 @@ The suite currently includes scenarios for:
 - config/: Shared configuration values
 - utils/: Helper utilities such as logging and data generation
 - reports/, screenshots/, allure-results/, allure-report/: Generated outputs
+
+## Framework architecture
+This framework is designed as a clean, layered automation suite that separates business-readable tests, step logic, page interactions, and browser control.
+
+### Playwright Automation Framework
+
+
+                                  Feature Files
+                                       │
+                                       ▼
+                               Step Definitions
+                                       │
+                                       ▼
+                                Page Objects
+                                       │
+                 ┌─────────────────────┼────────────────────┐
+                 │                     │                    │
+                 ▼                     ▼                    ▼
+             Utilities             Config             Custom World
+                 │                     │                    │
+                 ├──────────────┬──────┴──────────────┐
+                 ▼              ▼                     ▼
+            Logger         Test Data             Hooks
+                              Generator
+                 │
+                 ▼
+          Playwright Browser
+                 │
+                 ▼
+          Application Under Test
+
+                 │
+                 ▼
+      Allure Results + Screenshots
+                 │
+                 ▼
+            Allure HTML Report
+
+### Architecture diagram
+playwright-framework
+│
+├── features
+│
+├── stepDefinitions
+│
+├── pages
+│
+├── hooks
+│
+│     ├── hooks.ts
+│     └── world.ts
+│
+├── utils
+│     ├── Logger.ts
+│     ├── TestDataGenerator.ts
+│     └── Constants.ts
+│
+├── config
+│
+├── reports
+│
+├── screenshots
+│
+├── allure-results
+│
+├── allure-report
+│
+├── cucumber.js
+│
+├── package.json
+│
+└── tsconfig.json
+
+### Executetion flow
+
+Feature File
+      │
+      ▼
+Step Definition
+      │
+      ▼
+Page Object
+      │
+      ▼
+Playwright Actions
+      │
+      ▼
+Application
+      │
+      ▼
+Validation
+      │
+      ▼
+Hooks
+      │
+      ├── Capture Screenshot
+      ├── Capture Logs
+      ├── Attach Test Data
+      └── Close Browser
+      │
+      ▼
+Allure Report
+
+### Implemented Capabilities
+
+✅ Playwright + TypeScript Framework
+
+✅ Cucumber BDD
+
+✅ Page Object Model
+
+✅ Parallel Execution
+
+✅ Custom World Implementation
+
+✅ Dynamic Test Data using Faker
+
+✅ Common Utility Classes
+
+✅ Screenshot on Failure
+
+✅ Automatic Browser Cleanup
+
+✅ Allure Reporting
+
+✅ Automatic Report Generation
+
+✅ Logging Utility
+
+✅ Configuration Management
+
+✅ Reusable Page Methods
+
+✅ Scenario-level Isolation
+
+✅ Debugging Support
+
+### Workflow for management
+1. **Write business scenarios** in plain language under `features/`.
+2. **Step Definitions** convert scenario steps into automated actions.
+3. **Page Objects** encapsulate page locators and actions for reuse.
+4. **Hooks and Custom World** start the browser, manage context, capture failures, and close resources.
+5. **Playwright executes the browser actions** and validates outcomes.
+6. **Allure reporting and screenshots** are generated automatically after execution.
+
+### Key benefits for the team
+- Non-technical stakeholders can review tests using plain English feature files.
+- Developers can add UI coverage without changing business logic.
+- Failures are easier to diagnose with structured reports and screenshots.
+- The framework is extensible for new features, test data, and browser support.
 
 ## Prerequisites
 Make sure the following are installed:

@@ -1,0 +1,12 @@
+signupEmail: quinton.becker@yahoo.com
+password: 857iYgrFNP
+DOB: [object Object]
+First Name: Ronny
+Last Name: Ankunding
+Company Name: Block, Grady and Zemlak
+Address1: 53125 The Beeches
+Address2: 77188 Springfield Road
+State: Colorado
+City: Darrylboro
+Zip Code: 31367
+Mobile Number: 0096341109
